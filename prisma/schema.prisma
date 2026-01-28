@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model FoodItem {
+  id          String         @id @default(uuid())
+  name        String
+  description String?
+  price       Float
+  category    String
+  imageUrl    String?        // Main thumbnail
+  images      ProductImage[] // Additional photos
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  OrderItems  OrderItem[]
+}
+
+model ProductImage {
+  id         String   @id @default(uuid())
+  url        String
+  foodItemId String
+  foodItem   FoodItem @relation(fields: [foodItemId], references: [id], onDelete: Cascade)
+}
+
+model Order {
+  id              String      @id @default(uuid())
+  customerName    String
+  customerAddress String
+  customerPhone   String
+  total           Float
+  status          String      @default("PENDING")
+  timestamp       DateTime    @default(now())
+  OrderItems      OrderItem[]
+}
+
+model OrderItem {
+  id         String   @id @default(uuid())
+  foodItemId String
+  foodItem   FoodItem @relation(fields: [foodItemId], references: [id])
+  orderId    String
+  order      Order    @relation(fields: [orderId], references: [id])
+  name       String
+  price      Float
+  quantity   Int
+}
