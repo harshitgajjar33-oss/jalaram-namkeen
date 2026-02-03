@@ -25,7 +25,10 @@ export default function ProductsPage() {
     async function fetchProducts() {
       try {
         const response = await fetch('/api/food-items');
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}));
+          throw new Error(errorData.error || errorData.message || `HTTP error! status: ${response.status}`);
+        }
         const data: FoodItem[] = await response.json();
         setProducts(data);
       } catch (err: any) {
