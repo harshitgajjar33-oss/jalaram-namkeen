@@ -1,11 +1,14 @@
 import { PrismaClient } from '@prisma/client'
-
-// In serverless environments like Netlify, relative paths for SQLite can be problematic.
-// However, Prisma usually handles the 'file:./dev.db' relative to the schema.prisma file.
-// If DATABASE_URL is set in .env as 'file:./prisma/dev.db', it's relative to project root.
+import path from 'path'
 
 const prismaClientSingleton = () => {
+  // Solve 'Unable to open database file' on Netlify
+  const dbPath = process.env.NODE_ENV === 'production'
+    ? `file:${path.resolve(process.cwd(), 'prisma/dev.db')}`
+    : undefined;
+
   return new PrismaClient({
+    datasources: dbPath ? { db: { url: dbPath } } : undefined,
     log: ['error', 'warn'],
   })
 }
