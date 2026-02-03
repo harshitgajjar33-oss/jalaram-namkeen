@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
@@ -29,8 +29,8 @@ interface Order {
   OrderItems: OrderItem[];
 }
 
-export default function EditOrderPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default function EditOrderPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   const router = useRouter();
   const [order, setOrder] = useState<Order | null>(null);
   const [loading, setLoading] = useState(true);

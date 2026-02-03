@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
@@ -13,8 +13,8 @@ interface FoodItem {
   imageUrl: string;
 }
 
-export default function EditFoodItemPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default function EditFoodItemPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   const router = useRouter();
   const [formData, setFormData] = useState<FoodItem | null>(null);
   const [loading, setLoading] = useState(true);
