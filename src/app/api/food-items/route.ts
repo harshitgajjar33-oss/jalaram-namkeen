@@ -12,9 +12,13 @@ export async function GET() {
       }
     });
     return NextResponse.json(foodItems);
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error fetching food items:', error);
-    return NextResponse.json({ message: 'Error fetching food items' }, { status: 500 });
+    return NextResponse.json({
+      message: 'Error fetching food items',
+      error: error.message,
+      stack: error.stack
+    }, { status: 500 });
   }
 }
 
