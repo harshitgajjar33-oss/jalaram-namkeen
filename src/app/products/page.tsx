@@ -48,24 +48,24 @@ export default function ProductsPage() {
   return (
     <div className="bg-cream min-h-screen pt-24">
       {/* Header */}
-      <section className="py-20 bg-primary relative overflow-hidden">
+      <section className="py-12 md:py-20 bg-primary relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent"></div>
         <div className="container mx-auto px-6 relative z-10">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl lg:text-7xl font-playfair font-bold text-white mb-6 text-center"
+            className="text-3xl sm:text-5xl lg:text-7xl font-playfair font-bold text-white mb-6 text-center leading-tight"
           >
             Our Flavor <span className="text-secondary italic">Catalog</span>
           </motion.h1>
 
           {/* Search Bar */}
-          <div className="max-w-2xl mx-auto relative mt-12">
-            <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-dark/30" size={20} />
+          <div className="max-w-2xl mx-auto relative mt-8 md:mt-12">
+            <Search className="absolute left-5 md:left-6 top-1/2 -translate-y-1/2 text-dark/30" size={18} />
             <input
               type="text"
-              placeholder="Search for snacks (e.g. Sev, Gathiya, Wafers...)"
-              className="w-full bg-white rounded-2xl py-5 pl-14 pr-6 focus:outline-none focus:ring-4 focus:ring-secondary/20 shadow-premium transition-all"
+              placeholder="Search for snacks..."
+              className="w-full bg-white rounded-2xl py-4 md:py-5 pl-12 md:pl-14 pr-6 focus:outline-none focus:ring-4 focus:ring-secondary/20 shadow-premium transition-all text-sm md:text-base"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -98,7 +98,7 @@ export default function ProductsPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
                 <AnimatePresence>
                   {filteredProducts.map((product, idx) => (
                     <motion.div
@@ -163,12 +163,12 @@ export default function ProductsPage() {
       {/* Wholesale Banner */}
       <section className="pb-24">
         <div className="container mx-auto px-6">
-          <div className="bg-white rounded-[40px] p-12 border border-black/5 flex flex-col lg:flex-row items-center justify-between gap-12 shadow-premium">
+          <div className="bg-white rounded-3xl md:rounded-[40px] p-8 md:p-12 border border-black/5 flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12 shadow-premium text-center lg:text-left">
             <div className="max-w-xl">
-              <h2 className="text-3xl lg:text-4xl font-playfair font-bold text-primary mb-4">Interested in Bulk Pricing?</h2>
-              <p className="text-dark/60">We offer special rates for corporate gifting, white-labeling, and international distribution.</p>
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-playfair font-bold text-primary mb-4">Interested in Bulk Pricing?</h2>
+              <p className="text-sm md:text-base text-dark/60">We offer special rates for corporate gifting, white-labeling, and international distribution.</p>
             </div>
-            <Link href="/contact" className="btn-premium whitespace-nowrap">
+            <Link href="/contact" className="btn-premium whitespace-nowrap w-full lg:w-auto text-sm py-4">
               Get Wholesale Quote
             </Link>
           </div>

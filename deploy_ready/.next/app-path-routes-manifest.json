@@ -1,0 +1,21 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/about/page": "/about",
+  "/admin/food-items/[id]/page": "/admin/food-items/[id]",
+  "/admin/food-items/new/page": "/admin/food-items/new",
+  "/admin/food-items/page": "/admin/food-items",
+  "/admin/orders/[id]/page": "/admin/orders/[id]",
+  "/admin/orders/page": "/admin/orders",
+  "/admin/page": "/admin",
+  "/api/food-items/[id]/route": "/api/food-items/[id]",
+  "/api/food-items/route": "/api/food-items",
+  "/api/orders/[id]/route": "/api/orders/[id]",
+  "/api/orders/route": "/api/orders",
+  "/contact/page": "/contact",
+  "/favicon.ico/route": "/favicon.ico",
+  "/page": "/",
+  "/products/[id]/page": "/products/[id]",
+  "/products/page": "/products",
+  "/quality/page": "/quality"
+}

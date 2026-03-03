@@ -34,25 +34,25 @@ export default function AboutPage() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl lg:text-8xl font-playfair font-bold text-primary mb-8"
+            className="text-4xl sm:text-5xl lg:text-8xl font-playfair font-bold text-primary mb-8 leading-tight"
           >
-            A Legacy of <br />
+            A Legacy of <br className="hidden sm:block" />
             <span className="italic text-accent">Taste & Tradition</span>
           </motion.h1>
         </div>
       </section>
 
       {/* Story Section */}
-      <section className="py-24 bg-white">
+      <section className="py-12 md:py-24 bg-white">
         <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
             <motion.div {...fadeInUp} className="space-y-8">
               <div className="inline-flex items-center gap-3 text-primary font-bold uppercase tracking-widest text-sm">
                 <History size={20} className="text-accent" />
                 Our Journey
               </div>
-              <h2 className="section-title !text-left">From a Humble Kitchen to Global Distribution</h2>
-              <div className="space-y-6 text-dark/70 text-lg leading-relaxed">
+              <h2 className="section-title !text-left leading-tight text-3xl md:text-5xl">From a Humble Kitchen to Global Distribution</h2>
+              <div className="space-y-6 text-dark/70 text-base md:text-lg leading-relaxed">
                 <p>
                   The Jalaram story began in 1985 in a small, aromatic kitchen in Gujarat. Armed with traditional family recipes and a passion for perfection, our founders set out to create snacks that weren't just food, but a memory of home.
                 </p>
@@ -73,9 +73,9 @@ export default function AboutPage() {
               </div>
             </motion.div>
 
-            <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="relative">
-              <div className="absolute -top-10 -left-10 w-40 h-40 bg-secondary/20 rounded-full blur-3xl animate-float"></div>
-              <div className="relative aspect-[4/5] rounded-[40px] overflow-hidden shadow-2xl">
+            <motion.div {...fadeInUp} transition={{ delay: 0.2 }} className="relative mt-12 md:mt-0">
+              <div className="absolute -top-6 md:-top-10 -left-6 md:-left-10 w-24 md:w-40 h-24 md:h-40 bg-secondary/20 rounded-full blur-3xl animate-float"></div>
+              <div className="relative aspect-[4/5] rounded-3xl md:rounded-[40px] overflow-hidden shadow-2xl">
                 <Image
                   src="/images/packaging.png"
                   alt="Our Pride"
@@ -83,9 +83,9 @@ export default function AboutPage() {
                   className="object-cover"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 glass-card !p-8 !rounded-2xl max-w-xs shadow-2xl border-white">
-                <p className="text-primary font-bold italic mb-2">"Quality is the silent ambassador of our brand."</p>
-                <p className="text-xs text-dark/40 uppercase tracking-widest">— The Founder</p>
+              <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 glass-card !p-6 md:!p-8 !rounded-2xl max-w-xs shadow-2xl border-white">
+                <p className="text-primary font-bold italic mb-2 text-sm md:text-base">"Quality is the silent ambassador of our brand."</p>
+                <p className="text-[10px] md:text-xs text-dark/40 uppercase tracking-widest">— The Founder</p>
               </div>
             </motion.div>
           </div>
@@ -136,16 +136,16 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24">
+      <section className="py-12 md:py-24">
         <div className="container mx-auto px-6">
-          <div className="bg-primary rounded-[50px] p-12 lg:p-24 relative overflow-hidden text-center">
+          <div className="bg-primary rounded-3xl md:rounded-[50px] p-8 md:p-12 lg:p-24 relative overflow-hidden text-center">
             <div className="absolute inset-0 bg-gradient-to-r from-accent/20 to-transparent"></div>
             <motion.div {...fadeInUp} className="relative z-10">
-              <h2 className="text-4xl lg:text-6xl font-playfair font-bold text-white mb-8">Ready to grow with us?</h2>
-              <p className="text-white/60 mb-12 max-w-2xl mx-auto text-lg leading-relaxed">
+              <h2 className="text-3xl md:text-4xl lg:text-6xl font-playfair font-bold text-white mb-6 md:mb-8">Ready to grow with us?</h2>
+              <p className="text-white/60 mb-10 md:mb-12 max-w-2xl mx-auto text-sm md:text-lg leading-relaxed">
                 Join our network of authorized distributors and bring the authentic taste of Jalaram Namkeen to your region.
               </p>
-              <Link href="/contact" className="btn-premium mx-auto">
+              <Link href="/contact" className="btn-premium w-full sm:w-auto mx-auto text-sm py-4">
                 Become a Partner Today
                 <ChevronRight size={20} />
               </Link>

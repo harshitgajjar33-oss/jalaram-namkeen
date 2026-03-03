@@ -26,10 +26,10 @@ const Header = () => {
             <Image src="/logo.jpg" alt="Jalaram Namkeen" width={48} height={48} className="object-cover" />
           </div>
           <div className="flex flex-col">
-            <span className="text-lg md:text-2xl font-playfair font-bold text-primary leading-tight">
+            <span className="text-base md:text-2xl font-playfair font-bold text-primary leading-tight">
               Jalaram <span className="text-accent">Namkeen</span>
             </span>
-            <span className="text-[8px] md:text-[10px] uppercase tracking-[0.2em] text-dark/40 font-montserrat">Authentic Indian Flavors</span>
+            <span className="text-[7px] md:text-[10px] uppercase tracking-[0.2em] text-dark/40 font-montserrat">Authentic Indian Flavors</span>
           </div>
         </Link>
 
@@ -46,20 +46,20 @@ const Header = () => {
           ))}
         </nav>
 
-        <div className="flex items-center space-x-4 md:space-x-6">
+        <div className="flex items-center space-x-3 md:space-x-6">
           <Link href="/products" className="p-2 text-dark/60 hover:text-primary transition-colors relative group">
-            <ShoppingBag size={22} />
+            <ShoppingBag size={20} className="md:w-[22px] md:h-[22px]" />
             <span className="absolute top-0 right-0 w-2 h-2 bg-accent rounded-full scale-0 group-hover:scale-100 transition-transform"></span>
           </Link>
-          <Link href="/contact" className="btn-premium py-3 px-6 text-sm hidden sm:flex">
+          <Link href="/contact" className="btn-premium !py-2.5 !px-5 md:!py-3 md:!px-6 text-xs md:text-sm hidden md:flex">
             Bulk Inquiry
-            <ChevronRight size={18} />
+            <ChevronRight size={16} className="md:w-[18px] md:h-[18px]" />
           </Link>
           <button
-            className="lg:hidden p-2 text-primary"
+            className="lg:hidden p-2 text-primary focus:outline-none"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
+            {isOpen ? <X size={24} className="md:w-[28px] md:h-[28px]" /> : <Menu size={24} className="md:w-[28px] md:h-[28px]" />}
           </button>
         </div>
       </div>

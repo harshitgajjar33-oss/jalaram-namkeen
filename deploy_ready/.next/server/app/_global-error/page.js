@@ -1,0 +1,11 @@
+var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/_global-error/page.js")
+R.c("server/chunks/ssr/[root-of-the-server]__97cdc45c._.js")
+R.c("server/chunks/ssr/jalaram-namkin-hq_f1163960._.js")
+R.c("server/chunks/ssr/d49dd_next_dist_4b124832._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__4b48c30f._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__5a90c3eb._.js")
+R.c("server/chunks/ssr/d49dd_next_dist_9f41f3de._.js")
+R.c("server/chunks/ssr/jalaram-namkin-hq_src_app_cf11decb._.js")
+R.c("server/chunks/ssr/jalaram-namkin-hq__next-internal_server_app__global-error_page_actions_6aa171d8.js")
+R.m(99855)
+module.exports=R.m(99855).exports

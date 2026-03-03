@@ -72,18 +72,18 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
     ].filter(img => img.url);
 
     return (
-        <main className="bg-cream min-h-screen pt-32 pb-24 text-dark">
+        <main className="bg-cream min-h-screen pt-24 md:pt-32 pb-16 md:pb-24 text-dark font-inter">
             <div className="container mx-auto px-6">
-                <Link href="/products" className="inline-flex items-center gap-2 text-primary/60 hover:text-primary transition-colors mb-12 font-bold uppercase tracking-widest text-xs">
+                <Link href="/products" className="inline-flex items-center gap-2 text-primary/60 hover:text-primary transition-colors mb-8 md:mb-12 font-bold uppercase tracking-widest text-[10px] md:text-xs">
                     <ChevronLeft size={16} /> Back to All Snacks
                 </Link>
 
                 <div className="grid lg:grid-cols-2 gap-16 items-start">
                     {/* Gallery Section */}
-                    <div className="space-y-6">
+                    <div className="space-y-4 md:space-y-6">
                         <motion.div
                             layoutId="mainImage"
-                            className="relative aspect-square rounded-[40px] overflow-hidden shadow-2xl bg-white border border-black/5"
+                            className="relative aspect-square rounded-3xl md:rounded-[40px] overflow-hidden shadow-2xl bg-white border border-black/5"
                         >
                             <AnimatePresence mode="wait">
                                 <motion.div
@@ -104,14 +104,14 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                                 </motion.div>
                             </AnimatePresence>
 
-                            <div className="absolute top-8 left-8 z-10">
-                                <span className="bg-secondary text-primary font-bold px-6 py-2 rounded-full text-sm uppercase tracking-widest shadow-xl">
+                            <div className="absolute top-4 left-4 md:top-8 md:left-8 z-10">
+                                <span className="bg-secondary text-primary font-bold px-4 py-1.5 md:px-6 md:py-2 rounded-full text-[10px] md:text-sm uppercase tracking-widest shadow-xl">
                                     {product.category}
                                 </span>
                             </div>
 
-                            <button className="absolute bottom-8 right-8 z-10 w-12 h-12 rounded-full bg-white/90 backdrop-blur shadow-xl flex items-center justify-center text-primary hover:scale-110 transition-transform">
-                                <Maximize2 size={20} />
+                            <button className="absolute bottom-4 right-4 md:bottom-8 md:right-8 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 backdrop-blur shadow-xl flex items-center justify-center text-primary hover:scale-110 transition-transform">
+                                <Maximize2 size={18} className="md:w-5 md:h-5" />
                             </button>
                         </motion.div>
 
@@ -144,40 +144,40 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                     >
                         <div>
                             <div className="flex items-center gap-2 mb-4">
-                                {[1, 2, 3, 4, 5].map(i => <Star key={i} size={16} className="text-accent fill-accent" />)}
-                                <span className="text-dark/40 text-xs font-bold uppercase tracking-widest ml-2">Premium Choice</span>
+                                {[1, 2, 3, 4, 5].map(i => <Star key={i} size={14} className="text-accent fill-accent md:w-4 md:h-4" />)}
+                                <span className="text-dark/40 text-[10px] md:text-xs font-bold uppercase tracking-widest ml-2">Premium Choice</span>
                             </div>
-                            <h1 className="text-5xl lg:text-7xl font-playfair font-bold text-primary mb-6">{product.name}</h1>
+                            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-playfair font-bold text-primary mb-6 leading-tight">{product.name}</h1>
                             <div className="flex items-baseline gap-4">
-                                <p className="text-4xl font-bold text-accent">₹{product.price}</p>
-                                <span className="text-sm text-dark/40 font-bold uppercase tracking-widest">Ex-Factory Price</span>
+                                <p className="text-3xl md:text-4xl font-bold text-accent">₹{product.price}</p>
+                                <span className="text-[10px] md:text-sm text-dark/40 font-bold uppercase tracking-widest">Ex-Factory Price</span>
                             </div>
                         </div>
 
-                        <div className="glass-card !bg-white/50 !p-8 border-primary/5">
-                            <p className="text-lg text-dark/70 leading-relaxed font-inter italic">
+                        <div className="glass-card !bg-white/50 p-6 md:!p-8 border-primary/5">
+                            <p className="text-base md:text-lg text-dark/70 leading-relaxed font-inter italic">
                                 {product.description || "Indulge in the authentic taste of our premium selection. Crafted with time-honored recipes and the finest spices, this snack represents the true essence of Indian savory traditions."}
                             </p>
                         </div>
 
                         {/* Trust Badges */}
-                        <div className="grid grid-cols-2 gap-6 py-10 border-y border-black/5">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 py-8 md:py-10 border-y border-black/5">
                             <div className="flex items-center gap-4">
-                                <div className="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center text-primary shadow-sm">
-                                    <ShieldCheck size={28} />
+                                <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-primary/5 flex items-center justify-center text-primary shadow-sm shrink-0">
+                                    <ShieldCheck size={24} className="md:w-6 md:h-6" />
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-sm text-primary uppercase tracking-tight">Pure Quality</h4>
-                                    <p className="text-xs text-dark/40">FSSAI Certified Unit</p>
+                                    <h4 className="font-bold text-xs md:text-sm text-primary uppercase tracking-tight">Pure Quality</h4>
+                                    <p className="text-[10px] md:text-xs text-dark/40">FSSAI Certified Unit</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-4">
-                                <div className="w-14 h-14 rounded-2xl bg-accent/5 flex items-center justify-center text-accent shadow-sm">
-                                    <Truck size={28} />
+                                <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-accent/5 flex items-center justify-center text-accent shadow-sm shrink-0">
+                                    <Truck size={24} className="md:w-6 md:h-6" />
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-sm text-accent uppercase tracking-tight">Bulk Ready</h4>
-                                    <p className="text-xs text-dark/40">Dispatch in 24-48h</p>
+                                    <h4 className="font-bold text-xs md:text-sm text-accent uppercase tracking-tight">Bulk Ready</h4>
+                                    <p className="text-[10px] md:text-xs text-dark/40">Dispatch in 24-48h</p>
                                 </div>
                             </div>
                         </div>
@@ -199,13 +199,13 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                 </div>
 
                 {/* Discovery Section */}
-                <section className="mt-32">
-                    <div className="flex justify-between items-end mb-12">
+                <section className="mt-20 md:mt-32">
+                    <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6 mb-12">
                         <div>
-                            <h2 className="text-4xl font-playfair font-bold text-primary">Discover More</h2>
-                            <p className="text-dark/40 mt-2">The finest flavors from our kitchen to yours</p>
+                            <h2 className="text-3xl md:text-4xl font-playfair font-bold text-primary">Discover More</h2>
+                            <p className="text-dark/40 mt-2 text-sm md:text-base">The finest flavors from our kitchen to yours</p>
                         </div>
-                        <Link href="/products" className="group text-primary font-bold flex items-center gap-2">
+                        <Link href="/products" className="group text-primary font-bold flex items-center gap-2 text-sm md:text-base">
                             View Complete Collection <ArrowRight size={20} className="text-accent group-hover:translate-x-2 transition-transform" />
                         </Link>
                     </div>

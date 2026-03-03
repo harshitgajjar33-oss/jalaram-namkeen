@@ -1,0 +1,21 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/about/page": "app/about/page.js",
+  "/admin/food-items/[id]/page": "app/admin/food-items/[id]/page.js",
+  "/admin/food-items/new/page": "app/admin/food-items/new/page.js",
+  "/admin/food-items/page": "app/admin/food-items/page.js",
+  "/admin/orders/[id]/page": "app/admin/orders/[id]/page.js",
+  "/admin/orders/page": "app/admin/orders/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/api/food-items/[id]/route": "app/api/food-items/[id]/route.js",
+  "/api/food-items/route": "app/api/food-items/route.js",
+  "/api/orders/[id]/route": "app/api/orders/[id]/route.js",
+  "/api/orders/route": "app/api/orders/route.js",
+  "/contact/page": "app/contact/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/page": "app/page.js",
+  "/products/[id]/page": "app/products/[id]/page.js",
+  "/products/page": "app/products/page.js",
+  "/quality/page": "app/quality/page.js"
+}

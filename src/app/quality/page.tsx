@@ -16,7 +16,7 @@ export default function QualityPage() {
   return (
     <div className="bg-white pt-24">
       {/* Hero Section */}
-      <section className="relative py-24 bg-primary overflow-hidden">
+      <section className="relative py-16 md:py-24 bg-primary overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary rounded-full blur-[120px]"></div>
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent rounded-full blur-[120px]"></div>
@@ -25,9 +25,9 @@ export default function QualityPage() {
           <motion.h1
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="text-5xl lg:text-7xl font-playfair font-bold text-white mb-6"
+            className="text-3xl sm:text-5xl lg:text-7xl font-playfair font-bold text-white mb-6 leading-tight"
           >
-            The Gold Standard <br />
+            The Gold Standard <br className="hidden sm:block" />
             <span className="text-secondary italic">of Hygiene</span>
           </motion.h1>
           <motion.p
@@ -71,7 +71,7 @@ export default function QualityPage() {
                 key={idx}
                 {...fadeInUp}
                 transition={{ delay: idx * 0.1 }}
-                className="glass-card text-center !p-12"
+                className="glass-card text-center !p-8 md:!p-12 transition-all duration-300"
               >
                 <div className="w-20 h-20 rounded-2xl bg-primary/5 flex items-center justify-center mx-auto mb-8">
                   {cert.icon}
@@ -85,10 +85,10 @@ export default function QualityPage() {
       </section>
 
       {/* Process Section */}
-      <section className="py-24">
+      <section className="py-12 md:py-24">
         <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div {...fadeInUp} className="relative h-[600px] rounded-[40px] overflow-hidden shadow-2xl">
+          <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
+            <motion.div {...fadeInUp} className="relative h-[400px] md:h-[600px] rounded-3xl md:rounded-[40px] overflow-hidden shadow-2xl">
               <Image
                 src="/images/quality.png"
                 alt="Modern Manufacturing"
@@ -96,9 +96,9 @@ export default function QualityPage() {
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
-              <div className="absolute bottom-10 left-10 text-white">
-                <p className="text-secondary font-bold uppercase tracking-widest text-sm mb-2">Facility Feature</p>
-                <h3 className="text-3xl font-playfair font-bold text-white">State-of-the-Art Production</h3>
+              <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 text-white">
+                <p className="text-secondary font-bold uppercase tracking-widest text-[10px] md:text-sm mb-2">Facility Feature</p>
+                <h3 className="text-2xl md:text-3xl font-playfair font-bold text-white leading-tight">State-of-the-Art Production</h3>
               </div>
             </motion.div>
 
@@ -139,15 +139,15 @@ export default function QualityPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-primary">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl lg:text-5xl font-playfair font-bold text-white mb-8">Want to see our facility?</h2>
-          <p className="text-white/60 mb-12 max-w-xl mx-auto">We welcome bulk buyers and distributors for pre-scheduled factory visits.</p>
-          <div className="flex justify-center gap-6">
-            <Link href="/contact" className="btn-premium">
+      <section className="py-16 md:py-24 bg-primary text-center">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-playfair font-bold text-white mb-6 md:mb-8">Want to see our facility?</h2>
+          <p className="text-white/60 mb-10 md:mb-12 max-w-xl mx-auto text-sm md:text-base">We welcome bulk buyers and distributors for pre-scheduled factory visits.</p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6">
+            <Link href="/contact" className="btn-premium w-full sm:w-auto text-sm py-4">
               Book a Factory Visit
             </Link>
-            <Link href="/contact" className="btn-outline !text-white !border-white/20 hover:!border-white">
+            <Link href="/contact" className="btn-outline !text-white !border-white/20 hover:!border-white w-full sm:w-auto text-sm py-4">
               Download Quality manual
             </Link>
           </div>

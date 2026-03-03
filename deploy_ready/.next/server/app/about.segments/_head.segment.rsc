@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[71460,["/_next/static/chunks/b2b551304ba867fc.js","/_next/static/chunks/2ae3e1cc725ad998.js"],"ViewportBoundary"]
+3:I[71460,["/_next/static/chunks/b2b551304ba867fc.js","/_next/static/chunks/2ae3e1cc725ad998.js"],"MetadataBoundary"]
+4:"$Sreact.suspense"
+5:I[79597,["/_next/static/chunks/b2b551304ba867fc.js","/_next/static/chunks/2ae3e1cc725ad998.js"],"IconMark"]
+0:{"buildId":"ZdWit-oil3aZmjMHyZswV","rsc":["$","$1","h",{"children":[null,["$","$L2",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L3",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Jalaram Namkeen - Authentic Flavors, Industrial Scale"}],["$","meta","1",{"name":"description","content":"India's Trusted Partner for Bulk Namkeen & Savory Snacks."}],["$","link","2",{"rel":"icon","href":"/favicon.ico?favicon.0b3bf435.ico","sizes":"256x256","type":"image/x-icon"}],["$","$L5","3",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"loading":null,"isPartial":false}

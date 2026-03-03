@@ -37,13 +37,13 @@ export default function ContactPage() {
   return (
     <div className="bg-cream min-h-screen pt-24">
       {/* Header Section */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative py-12 md:py-20 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-primary/5 blur-[120px] rounded-full"></div>
         <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-accent font-bold tracking-[0.2em] uppercase text-sm mb-4 inline-block"
+            className="text-accent font-bold tracking-[0.2em] uppercase text-[10px] md:text-sm mb-4 inline-block"
           >
             Get In Touch
           </motion.span>
@@ -51,15 +51,15 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl lg:text-7xl font-playfair font-bold text-primary mb-6"
+            className="text-3xl sm:text-5xl lg:text-7xl font-playfair font-bold text-primary mb-6 leading-tight"
           >
-            Let's Start a <span className="italic text-accent">Partnership</span>
+            Let's Start a <br className="hidden sm:block" /> <span className="italic text-accent">Partnership</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-dark/60 max-w-2xl mx-auto font-inter"
+            className="text-sm md:text-lg text-dark/60 max-w-2xl mx-auto font-inter"
           >
             Whether you have a bulk requirement, distribution inquiry, or just want to say hello, we're all ears.
           </motion.p>
@@ -76,34 +76,34 @@ export default function ContactPage() {
               transition={{ delay: 0.3 }}
               className="lg:col-span-5 space-y-8"
             >
-              <div className="glass-card !bg-primary !text-white !p-10">
-                <h2 className="text-3xl font-playfair font-bold mb-8">Contact Information</h2>
-                <div className="space-y-8">
-                  <div className="flex items-start gap-6">
-                    <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-secondary shrink-0">
-                      <MapPin size={24} />
+              <div className="glass-card !bg-primary !text-white !p-8 md:!p-10 transition-all duration-300">
+                <h2 className="text-2xl md:text-3xl font-playfair font-bold mb-8">Contact Information</h2>
+                <div className="space-y-6 md:space-y-8">
+                  <div className="flex items-start gap-4 md:gap-6">
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-white/10 flex items-center justify-center text-secondary shrink-0">
+                      <MapPin size={20} className="md:w-6 md:h-6" />
                     </div>
                     <div>
                       <h4 className="font-bold text-secondary mb-1">Our Headquarters</h4>
                       <p className="text-white/70">Deendayal Industrial Area Street No 4, Near Aji Dem Chokdi, Rajkot - 360003</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-6">
-                    <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-secondary shrink-0">
-                      <Phone size={24} />
+                  <div className="flex items-center gap-4 md:gap-6">
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-white/10 flex items-center justify-center text-secondary shrink-0">
+                      <Phone size={20} className="md:w-6 md:h-6" />
                     </div>
                     <div>
                       <h4 className="font-bold text-secondary mb-1">Phone Number</h4>
-                      <p className="text-white/70">+91 97279 92997</p>
+                      <p className="text-sm md:text-base text-white/70">+91 97279 92997</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-6">
-                    <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-secondary shrink-0">
-                      <Mail size={24} />
+                  <div className="flex items-center gap-4 md:gap-6">
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-white/10 flex items-center justify-center text-secondary shrink-0">
+                      <Mail size={20} className="md:w-6 md:h-6" />
                     </div>
                     <div>
                       <h4 className="font-bold text-secondary mb-1">Email Address</h4>
-                      <p className="text-white/70">gruhudhyogjalaram@gmail.com</p>
+                      <p className="text-sm md:text-base text-white/70 break-all">gruhudhyogjalaram@gmail.com</p>
                     </div>
                   </div>
                 </div>
@@ -125,68 +125,68 @@ export default function ContactPage() {
               transition={{ delay: 0.4 }}
               className="lg:col-span-7"
             >
-              <form onSubmit={handleSubmit} className="glass-card !p-12 space-y-8">
-                <div className="grid md:grid-cols-2 gap-8">
+              <form onSubmit={handleSubmit} className="glass-card p-6 sm:p-8 md:p-12 space-y-6 md:space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                   <div className="space-y-2">
-                    <label className="text-sm font-bold text-primary/60 uppercase tracking-widest pl-1">Full Name</label>
+                    <label className="text-[10px] md:text-sm font-bold text-primary/60 uppercase tracking-widest pl-1">Full Name</label>
                     <input
                       type="text"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="John Doe"
-                      className="w-full bg-cream/50 border border-black/5 rounded-2xl py-4 px-6 focus:outline-none focus:border-accent focus:bg-white transition-all"
+                      className="w-full bg-cream/50 border border-black/5 rounded-xl md:rounded-2xl py-3.5 md:py-4 px-5 md:px-6 focus:outline-none focus:border-accent focus:bg-white transition-all text-sm md:text-base"
                       required
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-bold text-primary/60 uppercase tracking-widest pl-1">Email Address</label>
+                    <label className="text-[10px] md:text-sm font-bold text-primary/60 uppercase tracking-widest pl-1">Email Address</label>
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="john@example.com"
-                      className="w-full bg-cream/50 border border-black/5 rounded-2xl py-4 px-6 focus:outline-none focus:border-accent focus:bg-white transition-all"
+                      className="w-full bg-cream/50 border border-black/5 rounded-xl md:rounded-2xl py-3.5 md:py-4 px-5 md:px-6 focus:outline-none focus:border-accent focus:bg-white transition-all text-sm md:text-base"
                       required
                     />
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                   <div className="space-y-2">
-                    <label className="text-sm font-bold text-primary/60 uppercase tracking-widest pl-1">Phone Number</label>
+                    <label className="text-[10px] md:text-sm font-bold text-primary/60 uppercase tracking-widest pl-1">Phone Number</label>
                     <input
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="+91 00000 00000"
-                      className="w-full bg-cream/50 border border-black/5 rounded-2xl py-4 px-6 focus:outline-none focus:border-accent focus:bg-white transition-all"
+                      className="w-full bg-cream/50 border border-black/5 rounded-xl md:rounded-2xl py-3.5 md:py-4 px-5 md:px-6 focus:outline-none focus:border-accent focus:bg-white transition-all text-sm md:text-base"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-bold text-primary/60 uppercase tracking-widest pl-1">Company Name</label>
+                    <label className="text-[10px] md:text-sm font-bold text-primary/60 uppercase tracking-widest pl-1">Company Name</label>
                     <input
                       type="text"
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
                       placeholder="Your Company Ltd."
-                      className="w-full bg-cream/50 border border-black/5 rounded-2xl py-4 px-6 focus:outline-none focus:border-accent focus:bg-white transition-all"
+                      className="w-full bg-cream/50 border border-black/5 rounded-xl md:rounded-2xl py-3.5 md:py-4 px-5 md:px-6 focus:outline-none focus:border-accent focus:bg-white transition-all text-sm md:text-base"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-bold text-primary/60 uppercase tracking-widest pl-1">Your Message</label>
+                  <label className="text-[10px] md:text-sm font-bold text-primary/60 uppercase tracking-widest pl-1">Your Message</label>
                   <textarea
                     name="message"
                     rows={6}
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="How can we help you?"
-                    className="w-full bg-cream/50 border border-black/5 rounded-2xl py-4 px-6 focus:outline-none focus:border-accent focus:bg-white transition-all resize-none"
+                    className="w-full bg-cream/50 border border-black/5 rounded-xl md:rounded-2xl py-3.5 md:py-4 px-5 md:px-6 focus:outline-none focus:border-accent focus:bg-white transition-all text-sm md:text-base resize-none"
                     required
                   ></textarea>
                 </div>

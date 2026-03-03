@@ -38,24 +38,24 @@ export default function Home() {
             <span className="inline-block py-1 px-4 rounded-full bg-secondary/20 text-secondary border border-secondary/30 text-xs font-bold tracking-[0.2em] uppercase mb-6">
               Est. 1985 • A Legacy of Taste
             </span>
-            <h1 className="text-5xl lg:text-7xl font-playfair font-bold mb-6 leading-[1.1]">
-              Authentic Flavors, <br />
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-playfair font-bold mb-6 leading-[1.1]">
+              Authentic Flavors, <br className="hidden sm:block" />
               <span className="gradient-text">Industrial Scale</span>
             </h1>
-            <p className="text-lg text-white/70 mb-10 max-w-xl font-inter leading-relaxed">
+            <p className="text-base md:text-lg text-white/70 mb-8 md:mb-10 max-w-xl font-inter leading-relaxed">
               Jalaram Namkeen brings you a premium selection of traditional Indian snacks, crafted with passion and the finest ingredients for global distribution.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Link href="/products" className="btn-premium">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="/products" className="btn-premium w-full sm:w-auto text-sm py-4">
                 Explore Catalog
-                <ChevronRight size={20} />
+                <ChevronRight size={18} />
               </Link>
-              <Link href="/contact" className="btn-outline !border-white/20 !text-white hover:!border-white">
+              <Link href="/contact" className="btn-outline !border-white/20 !text-white hover:!border-white w-full sm:w-auto text-sm py-4">
                 Contact for Bulk
               </Link>
             </div>
 
-            <div className="mt-12 flex items-center gap-6">
+            <div className="mt-8 md:mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-4 md:gap-6">
               <div className="flex -space-x-3">
                 {[1, 2, 3, 4].map(i => (
                   <div key={i} className="w-10 h-10 rounded-full border-2 border-primary bg-secondary/20 flex items-center justify-center text-[10px] font-bold">
@@ -89,7 +89,7 @@ export default function Home() {
       </section>
 
       {/* Trust Stats Bar */}
-      <section className="w-full py-12 bg-white relative z-20 -mt-10 lg:container mx-auto px-6 rounded-3xl shadow-premium border border-black/5 grid grid-cols-2 md:grid-cols-4 gap-8">
+      <section className="w-full py-10 md:py-12 bg-white relative z-20 -mt-8 md:-mt-10 lg:container mx-auto px-6 rounded-2xl md:rounded-3xl shadow-premium border border-black/5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         {[
           { icon: <Clock className="text-accent" />, title: "35+ Years", desc: "Of Culinary Excellence" },
           { icon: <Star className="text-accent" />, title: "100+ Products", desc: "Authentic Varieties" },
@@ -107,9 +107,9 @@ export default function Home() {
       </section>
 
       {/* Story Section */}
-      <section className="w-full py-24 bg-cream">
-        <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div {...fadeInUp} className="relative aspect-square rounded-3xl overflow-hidden group">
+      <section className="w-full py-12 md:py-24 bg-cream">
+        <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
+          <motion.div {...fadeInUp} className="relative aspect-square md:aspect-auto md:h-[500px] rounded-2xl md:rounded-3xl overflow-hidden group">
             <Image
               src="/images/quality.png"
               alt="Quality Production"
@@ -187,27 +187,27 @@ export default function Home() {
       </section>
 
       {/* Bulk CTA Section */}
-      <section className="w-full py-24">
+      <section className="w-full py-12 md:py-24">
         <div className="container mx-auto px-6">
-          <div className="relative rounded-[40px] overflow-hidden bg-primary p-12 lg:p-24 text-center">
+          <div className="relative rounded-3xl md:rounded-[40px] overflow-hidden bg-primary p-8 sm:p-12 lg:p-24 text-center">
             <div className="absolute inset-0 overflow-hidden">
               <div className="absolute -top-1/2 -left-1/4 w-[100%] h-[200%] bg-accent/20 rounded-full blur-[120px]"></div>
               <div className="absolute -bottom-1/2 -right-1/4 w-[100%] h-[200%] bg-secondary/20 rounded-full blur-[120px]"></div>
             </div>
 
             <motion.div {...fadeInUp} className="relative z-10 max-w-3xl mx-auto">
-              <h2 className="text-4xl lg:text-6xl font-playfair font-bold text-white mb-8">
+              <h2 className="text-3xl sm:text-4xl lg:text-6xl font-playfair font-bold text-white mb-6 md:mb-8">
                 Ready to Partner with the <span className="text-secondary italic">Flavor Experts?</span>
               </h2>
-              <p className="text-lg text-white/70 mb-12 leading-relaxed">
+              <p className="text-base md:text-lg text-white/70 mb-8 md:mb-12 leading-relaxed">
                 Whether you're looking for white-label manufacturing or becoming an authorized distributor, we're here to grow together.
               </p>
-              <div className="flex flex-wrap justify-center gap-6">
-                <Link href="/contact" className="btn-premium">
+              <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6">
+                <Link href="/contact" className="btn-premium w-full sm:w-auto text-sm py-4">
                   Inquire Now for Bulk Orders
                   <Truck size={20} />
                 </Link>
-                <Link href="/contact" className="btn-outline !border-white/20 !text-white hover:!border-white">
+                <Link href="/contact" className="btn-outline !border-white/20 !text-white hover:!border-white w-full sm:w-auto text-sm py-4">
                   Get Wholesale Quote
                 </Link>
               </div>
