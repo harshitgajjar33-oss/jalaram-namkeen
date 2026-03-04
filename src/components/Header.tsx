@@ -18,7 +18,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <header className="fixed top-0 left-0 right-0 z-[60] transition-all duration-300">
       <div className="absolute inset-0 bg-white/60 backdrop-blur-xl border-b border-white/20 shadow-glass"></div>
       <div className="container mx-auto px-6 py-4 relative flex justify-between items-center">
         <Link href="/" className="group flex items-center space-x-3">
@@ -68,10 +68,10 @@ const Header = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white/95 backdrop-blur-2xl border-b border-black/5 overflow-hidden"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            className="fixed inset-x-0 top-[72px] bottom-0 z-[100] lg:hidden bg-white/95 backdrop-blur-2xl border-b border-black/5 overflow-y-auto"
           >
             <div className="container mx-auto px-6 py-8 flex flex-col space-y-6">
               {menuItems.map((link) => (

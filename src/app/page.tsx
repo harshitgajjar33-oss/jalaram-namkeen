@@ -73,10 +73,10 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 1.2, delay: 0.2 }}
-            className="hidden lg:block relative h-[600px]"
+            className="block relative h-[300px] sm:h-[400px] lg:h-[600px] mt-8 lg:mt-0"
           >
-            <div className="absolute inset-0 bg-accent/20 blur-[100px] rounded-full"></div>
-            <div className="relative h-full w-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl animate-float">
+            <div className="absolute inset-0 bg-accent/20 blur-[60px] lg:blur-[100px] rounded-full"></div>
+            <div className="relative h-full w-full rounded-2xl md:rounded-3xl overflow-hidden border border-white/10 shadow-2xl lg:animate-float">
               <Image
                 src="/images/packaging.png"
                 alt="Premium Snack Packaging"
