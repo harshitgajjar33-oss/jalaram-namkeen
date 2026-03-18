@@ -1,71 +1,23 @@
-"use client";
-
-import { useState, useEffect, use } from "react";
+import { ChevronLeft, ShoppingBag, ShieldCheck, Truck, Star, ArrowRight, Maximize2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ShoppingBag, ShieldCheck, Truck, Star, ArrowRight, Loader2, Maximize2 } from "lucide-react";
+import { products as staticProducts } from "@/data/products";
+import { notFound } from "next/navigation";
 
-interface ProductImage {
-    id: string;
-    url: string;
+export function generateStaticParams() {
+    return staticProducts.map((product) => ({
+        id: product.id,
+    }));
 }
 
-interface FoodItem {
-    id: string;
-    name: string;
-    description: string;
-    price: number;
-    category: string;
-    imageUrl: string;
-    images?: ProductImage[];
-}
+export default async function ProductDetailsPage({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = await params;
+    const product = staticProducts.find(p => p.id === id);
 
-export default function ProductDetailsPage({ params }: { params: Promise<{ id: string }> }) {
-    const { id } = use(params);
-    const [product, setProduct] = useState<FoodItem | null>(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-    const [activeImage, setActiveImage] = useState<string>("");
-
-    useEffect(() => {
-        async function fetchProduct() {
-            try {
-                const response = await fetch(`/api/food-items/${id}`);
-                if (!response.ok) throw new Error("Product not found");
-                const data = await response.json();
-                setProduct(data);
-                setActiveImage(data.imageUrl); // Set main image as default
-            } catch (err: any) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        }
-        fetchProduct();
-    }, [id]);
-
-    if (loading) {
-        return (
-            <div className="min-h-screen flex flex-col items-center justify-center gap-4 bg-cream text-dark">
-                <Loader2 className="animate-spin text-primary" size={40} />
-                <p className="text-primary font-bold">Unlocking flavor profile...</p>
-            </div>
-        );
+    if (!product) {
+        notFound();
     }
 
-    if (error || !product) {
-        return (
-            <div className="min-h-screen flex flex-col items-center justify-center gap-6 bg-cream text-dark">
-                <h2 className="text-3xl font-playfair font-bold text-primary">Snack Not Found</h2>
-                <Link href="/products" className="btn-premium">
-                    <ChevronLeft size={20} /> Back to Catalog
-                </Link>
-            </div>
-        );
-    }
-
-    // Combine main image with additional images for the gallery
     const gallery = [
         { id: 'main', url: product.imageUrl },
         ...(product.images || [])
@@ -81,48 +33,31 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                 <div className="grid lg:grid-cols-2 gap-16 items-start">
                     {/* Gallery Section */}
                     <div className="space-y-4 md:space-y-6">
-                        <motion.div
-                            layoutId="mainImage"
-                            className="relative aspect-square rounded-3xl md:rounded-[40px] overflow-hidden shadow-2xl bg-white border border-black/5"
-                        >
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={activeImage}
-                                    initial={{ opacity: 0, scale: 1.1 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.9 }}
-                                    transition={{ duration: 0.5 }}
-                                    className="absolute inset-0"
-                                >
-                                    <Image
-                                        src={activeImage || "/images/packaging.png"}
-                                        alt={product.name}
-                                        fill
-                                        className="object-cover"
-                                        priority
-                                    />
-                                </motion.div>
-                            </AnimatePresence>
+                        <div className="relative aspect-square rounded-3xl md:rounded-[40px] overflow-hidden shadow-2xl bg-white border border-black/5">
+                            <div className="absolute inset-0">
+                                <Image
+                                    src={product.imageUrl || "/images/packaging.png"}
+                                    alt={product.name}
+                                    fill
+                                    className="object-cover"
+                                    priority
+                                />
+                            </div>
 
                             <div className="absolute top-4 left-4 md:top-8 md:left-8 z-10">
                                 <span className="bg-secondary text-primary font-bold px-4 py-1.5 md:px-6 md:py-2 rounded-full text-[10px] md:text-sm uppercase tracking-widest shadow-xl">
                                     {product.category}
                                 </span>
                             </div>
-
-                            <button className="absolute bottom-4 right-4 md:bottom-8 md:right-8 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/90 backdrop-blur shadow-xl flex items-center justify-center text-primary hover:scale-110 transition-transform">
-                                <Maximize2 size={18} className="md:w-5 md:h-5" />
-                            </button>
-                        </motion.div>
+                        </div>
 
                         {/* Thumbnails */}
                         {gallery.length > 1 && (
                             <div className="grid grid-cols-5 gap-4 px-2">
                                 {gallery.map((img) => (
-                                    <button
+                                    <div
                                         key={img.id}
-                                        onClick={() => setActiveImage(img.url)}
-                                        className={`relative aspect-square rounded-2xl overflow-hidden border-2 transition-all duration-300 ${activeImage === img.url ? 'border-accent shadow-lg scale-105' : 'border-transparent opacity-60 hover:opacity-100'}`}
+                                        className="relative aspect-square rounded-2xl overflow-hidden border-2 border-transparent opacity-60 hover:opacity-100 transition-all cursor-pointer"
                                     >
                                         <Image
                                             src={img.url}
@@ -130,18 +65,14 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                                             fill
                                             className="object-cover"
                                         />
-                                    </button>
+                                    </div>
                                 ))}
                             </div>
                         )}
                     </div>
 
                     {/* Info Section */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        className="space-y-10"
-                    >
+                    <div className="space-y-10">
                         <div>
                             <div className="flex items-center gap-2 mb-4">
                                 {[1, 2, 3, 4, 5].map(i => <Star key={i} size={14} className="text-accent fill-accent md:w-4 md:h-4" />)}
@@ -154,7 +85,7 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                             </div>
                         </div>
 
-                        <div className="glass-card !bg-white/50 p-6 md:!p-8 border-primary/5">
+                        <div className="bg-white/50 backdrop-blur-xl border border-primary/5 rounded-3xl p-6 md:p-8 shadow-glass">
                             <p className="text-base md:text-lg text-dark/70 leading-relaxed font-inter italic">
                                 {product.description || "Indulge in the authentic taste of our premium selection. Crafted with time-honored recipes and the finest spices, this snack represents the true essence of Indian savory traditions."}
                             </p>
@@ -183,10 +114,14 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                         </div>
 
                         <div className="space-y-6 pt-4">
-                            <Link href="/contact" className="btn-premium w-full !py-6 text-xl group">
-                                <span>Inquire for Wholesale</span>
-                                <ShoppingBag size={24} className="group-hover:rotate-12 transition-transform" />
-                            </Link>
+                            <a
+                                href={`https://wa.me/919904221111?text=Hello,%20I'm%20interested%20in%20buying%20${encodeURIComponent(product.name)}.%20Please%20provide%20bulk%20pricing.`}
+                                target="_blank"
+                                className="bg-primary text-secondary font-bold py-6 px-10 rounded-xl transition-all duration-500 shadow-premium hover:shadow-2xl hover:-translate-y-1 flex items-center justify-center gap-3 overflow-hidden text-xl"
+                            >
+                                <span>Order on WhatsApp</span>
+                                <ShoppingBag size={24} />
+                            </a>
                             <div className="flex items-center justify-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] text-dark/30">
                                 <span>Distributor Network</span>
                                 <div className="w-1 h-1 rounded-full bg-dark/20"></div>
@@ -195,29 +130,27 @@ export default function ProductDetailsPage({ params }: { params: Promise<{ id: s
                                 <span>Bulk Packaging</span>
                             </div>
                         </div>
-                    </motion.div>
-                </div>
 
-                {/* Discovery Section */}
-                <section className="mt-20 md:mt-32">
-                    <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6 mb-12">
-                        <div>
-                            <h2 className="text-3xl md:text-4xl font-playfair font-bold text-primary">Discover More</h2>
-                            <p className="text-dark/40 mt-2 text-sm md:text-base">The finest flavors from our kitchen to yours</p>
-                        </div>
-                        <Link href="/products" className="group text-primary font-bold flex items-center gap-2 text-sm md:text-base">
-                            View Complete Collection <ArrowRight size={20} className="text-accent group-hover:translate-x-2 transition-transform" />
-                        </Link>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-8 opacity-40">
-                        {[1, 2, 3, 4].map(i => (
-                            <div key={i} className="aspect-[4/5] rounded-[30px] bg-white/20 border-2 border-dashed border-black/5 flex items-center justify-center">
-                                <p className="text-dark/10 font-bold uppercase tracking-widest text-[10px] transform -rotate-45">Related Product</p>
+                        {/* Customer Reviews for this Product */}
+                        {product.reviews && product.reviews.length > 0 && (
+                            <div className="pt-10 border-t border-black/5 mt-10">
+                                <h3 className="text-2xl font-playfair font-bold text-primary mb-6">Customer Reviews</h3>
+                                <div className="space-y-4">
+                                    {product.reviews.map(review => (
+                                        <div key={review.id} className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 border border-primary/5 shadow-sm">
+                                            <div className="flex items-center gap-1 mb-3">
+                                                {[...Array(review.rating)].map((_, i) => <Star key={i} size={14} className="text-accent fill-accent" />)}
+                                            </div>
+                                            <p className="text-dark/70 italic text-base mb-4 leading-relaxed">"{review.text}"</p>
+                                            <p className="font-bold text-primary text-xs uppercase tracking-widest">{review.author}</p>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                        ))}
+                        )}
+
                     </div>
-                </section>
+                </div>
             </div>
         </main>
     );

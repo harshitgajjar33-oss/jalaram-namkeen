@@ -5,15 +5,8 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingBag, Search, Filter, ArrowRight, Loader2 } from "lucide-react";
+import { products as staticProducts, FoodItem } from "@/data/products";
 
-interface FoodItem {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  category: string;
-  imageUrl: string;
-}
 
 export default function ProductsPage() {
   const [products, setProducts] = useState<FoodItem[]>([]);
@@ -22,22 +15,9 @@ export default function ProductsPage() {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    async function fetchProducts() {
-      try {
-        const response = await fetch('/api/food-items');
-        if (!response.ok) {
-          const errorData = await response.json().catch(() => ({}));
-          throw new Error(errorData.error || errorData.message || `HTTP error! status: ${response.status}`);
-        }
-        const data: FoodItem[] = await response.json();
-        setProducts(data);
-      } catch (err: any) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchProducts();
+    // In static mode, we just use the imported products
+    setProducts(staticProducts);
+    setLoading(false);
   }, []);
 
   const filteredProducts = products.filter(p =>

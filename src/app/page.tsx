@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronRight, Star, ShieldCheck, Truck, Clock, ArrowRight } from "lucide-react";
+import { products } from "@/data/products";
 
 export default function Home() {
   const fadeInUp = {
@@ -12,6 +13,10 @@ export default function Home() {
     viewport: { once: true },
     transition: { duration: 0.8, ease: "easeOut" as const }
   };
+
+  const allReviews = products.flatMap(product => 
+    (product.reviews || []).map(review => ({ ...review, productName: product.name }))
+  );
 
   return (
     <main className="flex flex-col items-center">
@@ -181,6 +186,38 @@ export default function Home() {
                   View Catalog <ArrowRight size={14} />
                 </Link>
               </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Customer Reviews Marquee */}
+      <section className="w-full py-16 md:py-24 overflow-hidden bg-cream border-y border-black/5">
+        <div className="container mx-auto px-6 mb-10 text-center">
+          <motion.div {...fadeInUp}>
+            <span className="text-accent font-bold tracking-widest uppercase text-xs mb-3 inline-block">Customer Feedback</span>
+            <h2 className="text-3xl md:text-5xl font-playfair font-bold text-primary">What Our Partners Say</h2>
+          </motion.div>
+        </div>
+        
+        <div className="relative flex overflow-x-hidden group w-full">
+          <div className="animate-scroll flex whitespace-nowrap gap-6 py-4 px-3 w-max group-hover:[animation-play-state:paused]">
+            {[...allReviews, ...allReviews, ...allReviews, ...allReviews].map((review, idx) => (
+              <div key={`${review.id}-${idx}`} className="glass-card bg-white min-w-[300px] max-w-[350px] whitespace-normal flex-shrink-0 shadow-sm border border-black/5">
+                <div className="flex items-center gap-1 mb-4">
+                  {[...Array(review.rating)].map((_, i) => <Star key={i} size={16} className="text-accent fill-accent" />)}
+                </div>
+                <p className="text-dark/70 text-base italic mb-6 leading-relaxed">"{review.text}"</p>
+                <div className="border-t border-black/10 pt-4 flex items-center justify-between">
+                  <div>
+                    <p className="font-bold text-primary text-sm">{review.author}</p>
+                    <p className="text-[10px] text-dark/40 uppercase tracking-widest mt-1">{review.productName}</p>
+                  </div>
+                  <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-primary text-xs font-bold">
+                    {review.author.charAt(0)}
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>

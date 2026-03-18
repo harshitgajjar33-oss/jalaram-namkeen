@@ -14,6 +14,15 @@ const config: Config = {
         maroon: '#800000',
         'maroon-dark': '#660000',
       },
+      keyframes: {
+        scroll: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(calc(-50% - 1rem))' },
+        }
+      },
+      animation: {
+        'scroll': 'scroll 40s linear infinite',
+      },
       fontFamily: {
         montserrat: ['Montserrat', 'sans-serif'],
         poppins: ['Poppins', 'sans-serif'],

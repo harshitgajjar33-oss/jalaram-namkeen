@@ -1,13 +1,9 @@
-import type { NextConfig } from "next";
-
 const nextConfig: any = {
   /* config options here */
-  output: 'standalone',
+  output: 'export',
   reactCompiler: true,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
